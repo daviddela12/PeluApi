@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  daviddela-peluapi-mariadb:
+    image: mariadb
+    volumes:
+      - daviddela-peluapi_data:/var/lib/mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: peluapi
+      MYSQL_DATABASE: peluapi
+      MYSQL_USER: peluapi
+      MYSQL_PASSWORD: peluapi
+volumes:
+  daviddela-peluapi_data: {}
