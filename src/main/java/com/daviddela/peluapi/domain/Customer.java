@@ -16,12 +16,18 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String surname;
+
     @Column()
     private String phone;
+
+    @Column()
+    private String email;
 
     /** con cascade ALL decimos que cuando se borre un customer se borraran todas las Appointment asociadas a ese cliente**/
     /** con mappedBy le decimos que en la clase Customer nos referimos a la propiedad con nombre customer*/
