@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -27,6 +30,7 @@ public class Customer implements Serializable {
     private String phone;
 
     @Column()
+    @NotBlank(message = "{customer.name.not_blank}" )
     private String email;
 
     /** con cascade ALL decimos que cuando se borre un customer se borraran todas las Appointment asociadas a ese cliente**/
