@@ -32,8 +32,8 @@ public class CustomerController {
         return customerService.findById(id);
     }
 
-    @PostMapping("/save")
-    public void save(@Valid @RequestBody Customer customer ) {
-        customerService.save(customer);
+    @PostMapping
+    public Customer save(@Valid @RequestBody Customer customer ) {
+        return customerService.save(customer);
     }
 }

@@ -8,5 +8,5 @@ public interface CustomerService {
 
     public Customer findById( Long id );
     public List<Customer> list();
-    public void save( Customer customer);
+    public Customer save( Customer customer);
 }
