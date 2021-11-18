@@ -46,4 +46,9 @@ public class CustomerController {
     public void delete(@PathVariable Long id){
         customerService.delete(id);
     }
+
+    @GetMapping("/password/{password}")
+    public boolean isValidPassword(@PathVariable("password") String password) {
+
+    }
 }
