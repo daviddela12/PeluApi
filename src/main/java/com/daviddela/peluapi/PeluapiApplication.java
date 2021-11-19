@@ -33,14 +33,15 @@ public class PeluapiApplication {
             customer.setSurname("de la Cruz");
             customer.setPhone("666777888");
             customer.setEmail("david@david.com");
-            customer.setPassword("1234");
+            customer.setPassword("A123456789#");
             customerList.add(customer);
             customer = new Customer();
             customer.setName("Mariló");
             customer.setSurname("Sabalete");
             customer.setPhone("666888999");
             customer.setEmail("marilo@marilo.com");
-            customer.setPassword("1234");
+            customer.setPassword("A123456789#");
+            Boolean a = customer.getPassword().matches(".*[A-Z].*");
             customerList.add(customer);
             customerRepository.saveAll(customerList);
         };

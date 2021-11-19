@@ -22,7 +22,7 @@ public class PasswordValidator implements ConstraintValidator<PasswordConstraint
     @Override
     public boolean isValid(String password, ConstraintValidatorContext constraintValidatorContext) {
         return password != null && !password.isBlank() && password.length() > 8 &&
-                password.matches("[A-Z]") && password.matches("[1-9]") &&
-                password.matches("[!#$%&@]");
+                password.matches(".*[A-Z].*") && password.matches(".*[1-9].*") &&
+                password.matches(".*[!#$%&@].*");
     }
 }

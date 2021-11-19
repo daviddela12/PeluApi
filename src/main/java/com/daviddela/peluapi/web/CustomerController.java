@@ -1,25 +1,25 @@
 package com.daviddela.peluapi.web;
 
 import com.daviddela.peluapi.domain.Customer;
-import com.daviddela.peluapi.exception.ResourceNotFoundException;
 import com.daviddela.peluapi.services.CustomerService;
-import org.slf4j.LoggerFactory;
+import com.daviddela.peluapi.validator.PasswordConstraint;
+import com.daviddela.peluapi.validator.PasswordValidator;
+import lombok.AllArgsConstructor;
+import org.hibernate.validator.internal.engine.constraintvalidation.ConstraintValidatorContextImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService customerService;
-
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 
     @GetMapping("/list")
     public ResponseEntity<Iterable<Customer>> list() {
@@ -48,7 +48,11 @@ public class CustomerController {
     }
 
     @GetMapping("/password/{password}")
-    public boolean isValidPassword(@PathVariable("password") String password) {
-
+    public boolean isValidPassword( @PathVariable("password") @PasswordConstraint String password,
+                                    BindingResult result) {
+        if(result.hasErrors()) {
+            return false;
+        }
+        return true;
     }
 }
