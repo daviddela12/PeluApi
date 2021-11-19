@@ -4,18 +4,16 @@ import com.daviddela.peluapi.domain.Customer;
 import com.daviddela.peluapi.exception.ResourceNotFoundException;
 import com.daviddela.peluapi.repository.CustomerRepository;
 import com.daviddela.peluapi.services.CustomerService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class CustomerServiceImpl implements CustomerService {
     final CustomerRepository customerRepository;
-
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
 
     @Override
     public Customer findById( Long id ) {
@@ -30,7 +28,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void save( Customer customer) {
-        this.customerRepository.save(customer);
+    public Customer save( Customer customer) {
+        return this.customerRepository.save(customer);
+    }
+
+    @Override
+    public Customer update(Customer customer) {
+        return this.customerRepository.save(customer);
+    }
+
+    @Override
+    public void delete(Long id) {
+        this.customerRepository.deleteById(id);
     }
 }
