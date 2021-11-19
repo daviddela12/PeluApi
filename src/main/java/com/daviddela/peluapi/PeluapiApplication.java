@@ -41,7 +41,6 @@ public class PeluapiApplication {
             customer.setPhone("666888999");
             customer.setEmail("marilo@marilo.com");
             customer.setPassword("A123456789#");
-            Boolean a = customer.getPassword().matches(".*[A-Z].*");
             customerList.add(customer);
             customerRepository.saveAll(customerList);
         };

@@ -3,21 +3,19 @@ package com.daviddela.peluapi.web;
 import com.daviddela.peluapi.domain.Customer;
 import com.daviddela.peluapi.services.CustomerService;
 import com.daviddela.peluapi.validator.PasswordConstraint;
-import com.daviddela.peluapi.validator.PasswordValidator;
 import lombok.AllArgsConstructor;
-import org.hibernate.validator.internal.engine.constraintvalidation.ConstraintValidatorContextImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/customer")
+@Validated
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -48,11 +46,7 @@ public class CustomerController {
     }
 
     @GetMapping("/password/{password}")
-    public boolean isValidPassword( @PathVariable("password") @PasswordConstraint String password,
-                                    BindingResult result) {
-        if(result.hasErrors()) {
-            return false;
-        }
+    public boolean isValidPassword(@PasswordConstraint @PathVariable("password") String password) {
         return true;
     }
 }
