@@ -21,7 +21,7 @@ public class CustomerController {
 
     @GetMapping("/list")
     public ResponseEntity<Iterable<Customer>> list() {
-       List<Customer> customerList = customerService.list();
+       List<Customer> customerList = customerService.findAll();
       return new ResponseEntity<>(customerList, HttpStatus.OK);
     }
 

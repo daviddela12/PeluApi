@@ -16,15 +16,15 @@ public class CustomerServiceImpl implements CustomerService {
     final CustomerRepository customerRepository;
 
     @Override
+    public List<Customer> findAll() {
+        return this.customerRepository.findAll();
+    }
+
+    @Override
     public Customer findById( Long id ) {
        return this.customerRepository
                .findById(id)
                .orElseThrow(() -> new ResourceNotFoundException(id));
-    }
-
-    @Override
-    public List<Customer> list() {
-       return this.customerRepository.findAll();
     }
 
     @Override
