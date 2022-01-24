@@ -39,7 +39,7 @@ public class Customer implements Serializable {
     private String password;
 
     /** con cascade ALL decimos que cuando se borre un customer se borraran todas las Appointment asociadas a ese cliente**/
-    /** con mappedBy le decimos que en la clase Customer nos referimos a la propiedad con nombre customer*/
+    /** con mappedBy le decimos que en la clase Appointment nos referimos a la propiedad con nombre customer*/
     @OneToMany( cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Appointment> appointmentList;
 }
