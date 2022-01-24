@@ -21,6 +21,7 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
         }
 )
 @Configuration
+
 public class AppConfig {
     @Value("${spring.profiles.active:dev}")
     private String activeProfiles;
