@@ -3,6 +3,7 @@
     <deployment type="docker-compose.yml">
       <settings>
         <option name="envFilePath" value="" />
+        <option name="sourceFilePath" value="src/main/profiles/dcruz/dockers/docker-compose.yml" />
       </settings>
     </deployment>
     <method v="2" />
